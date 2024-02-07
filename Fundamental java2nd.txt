@@ -1,0 +1,96 @@
+1.What is statically typed and Dynamically typed Programming Language?
+
+Ans:Statically typed: if the memory of the variable is given during the compilation time itself then such types of programming languages are called as "Statically typed".
+Eg: C,C++,Java
+Dynamically typed: if the memory of the variable is given during the execution time itself then such types of programming languages are called as "dynamically typed".
+Eg: Python,PHP,JavaScript
+
+
+2.What is the variable in Java?
+
+Ans:A variable is the title of a reserved region allocated in memory. In other words, it may be referred to as the name of a memory location.
+It is a container that holds the value while the Java program is executed.
+Each variable should be given a unique name to indicate the storage area.
+A variable is assigned with a data type(we will learn about it after this topic).
+Syntax for Declaring a Variable:
+Type variable _ name [= value];
+The variable _ name is the name of a variable. We can initialise the variable by specifying an equal sign and a value (initialization i.e. assigning an initial value, is optional). However, the compiler never assigns a default value to an uninitialized local variable in Java.
+int age = 20,	value datatype 
+
+
+3.How To Assign a Value To Variable?
+Ans:Syntax for Declaring a Variable:
+Type variable _ name [= value];
+The variable _ name is the name of a variable. We can initialise the variable by specifying an equal sign and a value (initialization i.e. assigning an initial value, is optional). However, the compiler never assigns a default value to an uninitialized local variable in Java.
+int age = 20,	value datatype 
+
+4.What are Primitive Data types in Java?
+
+Ans:Primitive data types: The primitive data types include boolean, char, byte, short, int, long, float and double.
+A primitive type is predefined by the language and is named by a reserved keyword.
+1. Boolean Type
+The Boolean data type can have two values— true or false and hence are typically used in true/false situations.
+For example,
+Boolean flag=true;
+2. Byte Type
+Values for the byte data type range from -128 to 127 (8-bit signed two's complement integer, you will know more about it once we move to programs and applications).
+A byte type is used in place of an int to save memory when it is certain that the value of a variable will be between -128 and 127.
+For example, byte range=195;
+
+
+
+5.What are the Identifiers in Java?
+Ans:An identifier is a name given to a package, class, interface, method, or variable. All identifiers must have different names.
+In Java, there are a few points to remember while dealing with identifiers .
+Rule 1 - All identifiers should begin with a letter (A to Z or a to z), $ and _ and must be unique.
+Rule 2 - After the first character/letter, identifiers can have any combination of characters.
+Rule 3 - A keyword cannot be used as an identifier.
+Rule 4 - The identifiers are case-sensitive.
+Rule 5 - Whitespaces are not permitted.
+Examples of legal identifiers: rank, $name, _ rate, __2_mark.
+Examples of illegal identifiers: 102pqr, -name.
+These variables, identifiers etc. consume memory units. Before proceeding ahead, let us have a look at the memory unit concept too. Here, we will only focus on the relevant concept of memory.
+
+
+
+6.List the Operators in Java?
+Ans:Operators in Java can be classified into 6 types:
+1.Arithmetic Operators
+2.Relational Operators
+3.Logical Operators
+4.Assignment Operators
+5.Unary Operators
+6.Bitwise Operators
+
+
+
+7.Explain about Increment and Decrement operators and give an examples?
+Ans:Example:
+class Main { public static void main (String[] args) {
+// declare variables p and q int p - 29, q  int result;
+// addition operator result=p+q;
+System . out . printIn (result) ;
+// subtraction operator
+	System . out . println (p	q);
+// we can directly perform subtraction in print statement, no need to // use result variable here
+// multiplication operator
+System. out. println(p * q) ;
+// division operator
+System.out.println(p / q) ;
+// modulo operator
+System. out. println(p % q) ;
+
+Output:
+30
+10
+200
+2
+
+Increment and Decrement Operators
+1.	Prelncrement(++a)
+2.	postlncrement(a++)
+3.	PreDecrement(--a)
+4.	PostDecrement(a—)
+
+
+
