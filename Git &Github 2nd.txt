@@ -1,0 +1,64 @@
+                                                                    Git & Github(2nd assignments)
+
+
+1.)	How to check if git is available on your system?
+Ans :This command is used to check the version of Git
+syntax: :it version or Git --version
+
+2.)	How to initialize a new Git repository?
+Ans :Initialize Git: Once you are in the desired directory, run the following command to initialize a new Git repository
+syntax: git init
+
+
+3.)	How to tell git about your name and email?
+
+Ans :git config --list //this command is used to provide the list of configuration
+To set the username and email
+git config --global user.name "Nitin '
+git config - -global user.email "javabynitin2022@gmail.com 
+global
+
+
+
+4.)	How to add a file to the staging area?
+Ans :git add
+To send the code from workspace to stage area we use the following command syntax : git add < file-name)
+If we want to push all the files from workspace to stage area,we use the following command. syntax: git add  git add --a
+
+
+
+5.)	How to remove a file from the staging area?
+Ans :To remove a file from the staging area in Git without deleting it from your working directory,
+you can use the git reset command followed by the file name.
+Here's how to do it
+Syntax: git reset <filename>
+
+
+
+	
+6.)	How to make a commit?
+Ans :git commit
+The files which are ready for commit should be in stage area, to perform commit operation we use the following command syntax: git commit -m (some-messages)
+egl. git commit -m "first commit" / / This file commit all the files present in stage area eg2. git commit -m "second commit' filename
+  This will commit only that file into local repository
+
+
+
+
+7.)	How to send your changes to a remote repository?
+Ans :git is used by git software to identify the folder which should participate in pushing to "local" and "remote  repositories.
+syntax : git init
+It means the files are moved from working area to stage area so these files can be committed to local repository" and to "remote repository".
+
+
+
+8.)	What is the difference between clone and pull?
+Ans :Difference between pull and clone
+i. git pull
+It is used to fetch the latest changes made in the remote repository to the working directory. 
+syntax: git pull ii. git clone
+It is used to clone the repository to the working directory of the developer. 
+syntax: git clone <url>
+
+
+
