@@ -1,0 +1,119 @@
+1)What are the Conditional Operators in Java?
+Ans:They are used when a condition comprises more than one boolean expression. 
+For instance, if we want to print a number only if it is greater than 2 and less than 5, 
+then we will use conditional operators to combine the 2 expressions. We have 3 types of conditional operators - logical-and,
+logical-or and ternary operator.
+
+
+2)What are the types of operators based on the number of operands?
+Ans:Operators in programming languages can be categorized based on the number of operands they take. Here are the common categories:
+Unary Operators: These operators work with only one operand.
+Binary Operators: These operators work with two operands.
+Ternary Operator: This is a special operator that takes three operands.
+Let me provide examples for each:
+Unary Operators: Examples include increment (++), decrement (--), unary plus (+), unary minus (-), logical NOT (!), bitwise NOT (~), etc.
+
+
+3)What is the use of Switch case in Java programming?
+Ans:Let's say we have a variable. Now, we want to do multiple operations on it based upon what value it is storing. In such cases the switch statement comes into play.
+It is like an if-else ladder with multiple conditions, where we check for equality of a variable with various values.
+It works with byte, short, int, long, enum types, String and some wrapper types like Byte, Short, Int, and Long. Since Java 7, you can use strings in the switch statement.
+Syntax
+switch (expression) { case x : // code break; case y : // code break;
+default:
+
+
+
+
+
+4)What are the priority levels of arithmetic operation in Java?
+Ans:In Java, arithmetic operations follow the standard precedence rules, which dictate the order in which operators are evaluated when an expression contains multiple operators. The priority levels of arithmetic operations in Java, from highest to lowest precedence, are as follows:
+
+Parentheses: Expressions enclosed in parentheses () are evaluated first.
+Unary Operators: Unary operators such as unary plus (+) and unary minus (-) are evaluated next.
+Multiplication, Division, and Remainder: Multiplication (*), division (/), and remainder (%) operations are evaluated next, from left to right.
+Addition and Subtraction: Addition (+) and subtraction (-) operations are evaluated last, from left to right.
+Here's a summary of the precedence levels:
+
+Parentheses ()
+Unary operators (e.g., unary plus (+), unary minus (-))
+Multiplication (*), division (/), and remainder (%)
+Addition (+) and subtraction (-)
+For example, consider the expression a + b * c. Here, b * c is evaluated first because multiplication (*) has a higher precedence than addition (+). To override this precedence and change the order of evaluation, you can use parentheses, such as (a + b) * c.
+
+
+5)What are the conditional Statements and use of conditional statements in Java?
+Ans:Conditional statements in Java are used to control the flow of execution based on certain conditions. They allow you to make decisions in your code by executing different blocks of code depending on whether a condition evaluates to true or false. The two main types of conditional statements in Java are the if statement and the switch statement.
+
+1) if Statement:
+The if statement is used to execute a block of code only if a specified condition is. 
+Syntax :if (condition) {
+    // code block to be executed if condition is true
+}
+
+2)switch Statement:
+The switch statement is used to execute one of several possible blocks of code, depending on the value of an expression. 
+It has the following syntax:switch (expression) {
+    case value1:
+        // code block to be executed if expression equals value1
+        break;
+    case value2:
+        // code block to be executed if expression equals value2
+        break;
+    ...
+    default:
+        // code block to be executed if expression does not match any case
+}
+
+
+6)What is the syntax of if else statement?
+Ans:Sometimes we encounter situations where we have 2 types of actions that we can perform. For example, if it's tuesday i'll eat veg burger otherwise i'll eat non-veg burger.
+An if else statement is designed to give us this functionality in our code. It executes statements based upon if some condition is true or false. If the condition is true, the if statement is executed, otherwise the else statement is executed.
+Syntax
+if (condition) { statement - 1
+ 
+statement - 2
+
+
+
+7)What are the 3 types of iterative statements in java?
+Ans:Assume someone comes up to you and says "l want you to give me a program that can give me all the numbers between 1 and 10000". In such a situation writing all the numbers from 1 to 10000 isn't a feasible solution. That's where loops come in. They help you perform a task repeatedly, until a certain condition is met. In our example, the task would be to print the value of the number, and the condition would be till the time it is less than 10000. In Java, we have 3 types of iterative statements -
+I.The while loop
+2.The for loop
+3.The do-while loop
+
+
+
+8)Write the difference between for loop and do-while loop?
+Ans:In Java, a for loop is a control flow statement used to repeatedly execute a block of code a fixed number of times. 
+It's widely used when the number of iterations is known in advance. 
+The syntax for a for loop in Java 
+The while loop
+A while loop is a loop that runs through its body, known as a while statement, as long as a predetermined condition is evaluated as true.
+Syntax
+while (condition) statement;
+
+
+
+9)Write a program to print numbers from 1 to 10.?
+Ans: 
+code: 
+public class Number{
+public static void main(string[]args){
+for(int i=1;i<=1;i++){
+System.out.println(i);
+}
+}
+}
+Outpt:
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
