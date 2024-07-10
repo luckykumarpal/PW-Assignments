@@ -1,0 +1,240 @@
+﻿Array Assignment
+
+
+1I What Do you mean by an Array?
+ANS:-An array is a data structure that stores a collection of elements, typically of the same data type, in a contiguous block of memory. Arrays allow you to store multiple values in a single variable, providing efficient access to and manipulation of these values. The elements of an array are indexed, typically starting at zero, which means you can access any element by its index.
+Key Characteristics of an Array:
+1. Fixed Size: The size of an array is determined when it is created and cannot be changed. If you need a resizable array, you can use dynamic data structures such as ArrayList in Java.
+2. Homogeneous Elements: All elements in an array are of the same type. This ensures consistency and type safety.
+3. Indexed Access: Each element in an array can be accessed using its index. Indexes usually start from 0 in most programming languages.
+4. Contiguous Memory Allocation: The elements of an array are stored in contiguous memory locations, which allows for efficient access and iteration.
+5. public class Main {
+6.     public static void main(String[] args) {
+7.         // Declare and initialize an array of integers
+8.         int[] arr = {10, 20, 30, 40, 50};
+9. 10.         // Access elements by index
+11.         System.out.println("Element at index 0: " + arr[0]);  // Output: 10
+12.         System.out.println("Element at index 3: " + arr[3]);  // Output: 40
+13. 14.         // Iterate over the array
+15.         for (int i = 0; i < arr.length; i++) {
+16.             System.out.println("Element at index " + i + ": " + arr[i]);
+17.         }
+18.     }
+19. }
+20. Advantages of Using Arrays:
+* Efficient Access: Arrays provide constant-time access to elements using their index.
+* Memory Efficiency: Arrays are a low-level data structure with minimal overhead.
+* Simple Syntax: Arrays are simple to declare and use.
+Limitations of Arrays:
+* Fixed Size: Once an array is created, its size cannot be changed, which can lead to wasted memory or the need for resizing.
+* Homogeneous Elements: All elements must be of the
+2) how to create an Array?
+ANS:-In Java, you can create an array in two ways: by specifying the size or by initializing it with values.
+
+
+Creating an Array by Specifying the Size
+java
+int[] arr = new int[5];  // Creates an array of integers with size 5
+
+
+Creating an Array by Initializing with Values
+
+
+int[] arr = {1, 2, 3, 4, 5};  // Initializes an array with values
+
+
+
+
+3) Can we change the size of an array at a time ?
+
+
+ANS:-No, in Java, once an array is created with a fixed size, its size cannot be changed.
+ If you need a resizable array, you should use the ArrayList class.
+
+
+import java.util.ArrayList;
+
+
+ArrayList<Integer> arrList = new ArrayList<>();
+arrList.add(1);
+arrList.add(2);
+arrList.add(3);
+arrList.add(4);  // Adds a new element to the list
+
+
+
+
+4) Can you declare an array without assigning the size of an array?
+
+
+ANS:-
+In Java, you cannot declare an array without specifying its size at some point. 
+However, you can declare an array reference without specifying the size and assign an array with a specific size later.
+int[] arr;  // Declares an array reference
+arr = new int[5];  // Assigns an array with size 5
+
+
+Alternatively, you can initialize an array with values without specifying the size.
+int[] arr = {1, 2, 3, 4, 5};  // The size is inferred from the number of values
+
+
+
+
+5) What is the default value of the array?
+
+
+ANS:-
+In Java, the default values for an array are:
+
+
+int - 0
+char - '\u0000' (null character)
+boolean - false
+float - 0.0f
+double - 0.0
+reference types - null
+For example:
+int[] intArray = new int[5];  // All elements initialized to 0
+boolean[] boolArray = new boolean[5];  // All elements initialized to false
+String[] strArray = new String[5];  // All elements initialized to null
+
+
+
+
+6) What is a 1D array with an example?
+
+
+ANS:-
+A 1D array is a linear array that represents a list of elements of the same type.
+int[] arr = {1, 2, 3, 4, 5};  // This is a 1D array
+
+
+
+
+
+
+7) write a program on a 2D Array?
+
+
+ANS:-A 2D array is an array of arrays, often used to represent a matrix.
+public class Main {
+    public static void main(String[] args) {
+        // Creating a 2D array
+        int[][] arr = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+
+
+        // Printing the 2D array
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();  // New line for each row
+        }
+    }
+}
+
+
+
+
+Sure! Let's focus on Java and address each of your questions in detail.
+
+
+2. How to create an Array?
+In Java, you can create an array in two ways: by specifying the size or by initializing it with values.
+
+
+Creating an Array by Specifying the Size
+java
+Copy code
+int[] arr = new int[5];  // Creates an array of integers with size 5
+Creating an Array by Initializing with Values
+java
+Copy code
+int[] arr = {1, 2, 3, 4, 5};  // Initializes an array with values
+3. Can we change the size of an array at runtime?
+No, in Java, once an array is created with a fixed size, its size cannot be changed. If you need a resizable array, you should use the ArrayList class.
+
+
+java
+Copy code
+import java.util.ArrayList;
+
+
+ArrayList<Integer> arrList = new ArrayList<>();
+arrList.add(1);
+arrList.add(2);
+arrList.add(3);
+arrList.add(4);  // Adds a new element to the list
+4. Can you declare an array without assigning the size of the array?
+In Java, you cannot declare an array without specifying its size at some point. However, you can declare an array reference without specifying the size and assign an array with a specific size later.
+
+
+java
+Copy code
+int[] arr;  // Declares an array reference
+arr = new int[5];  // Assigns an array with size 5
+Alternatively, you can initialize an array with values without specifying the size.
+
+
+java
+Copy code
+int[] arr = {1, 2, 3, 4, 5};  // The size is inferred from the number of values
+5. What is the default value of an array?
+In Java, the default values for an array are:
+
+
+int - 0
+char - '\u0000' (null character)
+boolean - false
+float - 0.0f
+double - 0.0
+reference types - null
+For example:
+
+
+java
+Copy code
+int[] intArray = new int[5];  // All elements initialized to 0
+boolean[] boolArray = new boolean[5];  // All elements initialized to false
+String[] strArray = new String[5];  // All elements initialized to null
+6. What is a 1D array with an example?
+A 1D array is a linear array that represents a list of elements of the same type.
+
+
+java
+Copy code
+int[] arr = {1, 2, 3, 4, 5};  // This is a 1D array
+7. Write a program on a 2D Array
+A 2D array is an array of arrays, often used to represent a matrix.
+
+
+Example Program in Java
+java
+Copy code
+public class Main {
+    public static void main(String[] args) {
+        // Creating a 2D array
+        int[][] arr = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+
+
+        // Printing the 2D array
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();  // New line for each row
+        }
+    }
+}
+This program creates a 2D array, initializes it with values, and then prints the array in a matrix format.
+
+
+These examples should give you a good understanding of how to work with arrays in Java.
