@@ -1,0 +1,244 @@
+﻿String3 Assignment
+                                                     StringAssignment3
+
+
+
+
+1 ) What is mutable String in java Explain with an example?
+Ans:-
+StringBuilder is a class that allows for the modification of string content. It is not synchronized, meaning it is faster but not thread-safe.
+
+
+Here's an example:
+
+
+java
+Copy code
+public class MutableStringExample {
+    public static void main(String[] args) {
+        StringBuilder mutableString = new StringBuilder("Hello");
+
+
+        // Appending more text to the mutable string
+        mutableString.append(" World!");
+
+
+        // Output the modified string
+        System.out.println(mutableString.toString());
+    }
+}
+Output:
+Hello World!
+
+
+Explanation:
+StringBuilder Creation: A StringBuilder object is created with the initial content "Hello".
+
+
+Modification: The append method is used to add " World!" to the existing string. This is possible because StringBuilder is mutable.
+
+
+Result: The final string is "Hello World!", showing that the original string was successfully modified.
+
+
+StringBuffer Example
+StringBuffer works similarly to StringBuilder but is synchronized, making it thread-safe but generally slower.
+
+
+public class MutableStringBufferExample {
+    public static void main(String[] args) {
+        StringBuffer mutableString = new StringBuffer("Hello");
+
+
+        // Appending more text to the mutable string
+        mutableString.append(" World!");
+
+
+        // Output the modified string
+        System.out.println(mutableString.toString());
+    }
+}
+
+
+Output:
+Hello World!
+In both examples, you can see how the mutable nature of StringBuilder and StringBuffer allows the content of the string to be changed after it is created.
+
+
+2) WAP to reverse a String?
+Input: "PWSKILLS"
+Output: "SLLIKSPW"
+
+
+Ans:-Here's a Java program to reverse a string:
+Program:
+public class ReverseString {
+    public static void main(String[] args) {
+        // Input string
+        String input = "PWSKILLS";
+
+
+        // Convert the string to a character array
+        char[] charArray = input.toCharArray();
+
+
+        // Initialize pointers
+        int left = 0;
+        int right = charArray.length - 1;
+
+
+        // Swap the characters
+        while (left < right) {
+            // Swap the characters at left and right indices
+            char temp = charArray[left];
+            charArray[left] = charArray[right];
+            charArray[right] = temp;
+
+
+            // Move the pointers towards the center
+            left++;
+            right--;
+        }
+
+
+        // Convert the character array back to a string
+        String reversedString = new String(charArray);
+
+
+        // Output the reversed string
+        System.out.println("Reversed String: " + reversedString);
+    }
+}
+Output:
+Reversed String: SLLIKSPW
+
+
+Explanation:
+Convert to Char Array: The input string "PWSKILLS" is converted to a character array to facilitate the swapping of characters.
+
+
+Swapping Characters:
+
+
+Two pointers, left (starting from the beginning) and right (starting from the end), are used to traverse the array.
+The characters at these pointers are swapped until the left pointer is greater than or equal to the right pointer.
+Convert Back to String: The character array, which now contains the reversed characters, is converted back to a string.
+
+
+Output: The reversed string is printed as "SLLIKSPW".
+
+
+3) WAP to reverse a  sentance while presrving the position
+Input: Think Twice
+Output: "kniht eciwt"
+
+
+Ans:- To reverse the words in a sentence while preserving their positions, you can reverse each word individually without altering their positions in the sentence. Here's a Java program to achieve that:
+public class ReverseSentence {
+    public static void main(String[] args) {
+        // Input sentence
+        String input = "Think Twice";
+
+
+        // Split the sentence into words
+        String[] words = input.split(" ");
+
+
+        // StringBuilder to store the result
+        StringBuilder result = new StringBuilder();
+
+
+        // Loop through each word
+        for (String word : words) {
+            // Reverse the current word
+            String reversedWord = new StringBuilder(word).reverse().toString();
+
+
+            // Append the reversed word to the result
+            result.append(reversedWord).append(" ");
+        }
+
+
+        // Convert the result to a string and trim any trailing spaces
+        String finalOutput = result.toString().trim();
+
+
+        // Output the final result
+        System.out.println("Reversed Sentence: " + finalOutput);
+    }
+}
+Output:
+Reversed Sentence: kniht eciwt
+Explanation:
+Splitting the Sentence:
+
+
+The sentence "Think Twice" is split into words using the split(" ") method, resulting in an array ["Think", "Twice"].
+Reversing Each Word:
+
+
+A loop iterates over each word in the array.
+Each word is reversed using the StringBuilder's reverse() method.
+Building the Result:
+
+
+The reversed words are appended to a StringBuilder object, with a space added after each word.
+Output:
+
+
+The final string is trimmed to remove any trailing spaces and then printed, resulting in "kniht eciwt".
+
+
+4) WAP to sort a String Alphabetically?
+
+
+To sort the characters in a string alphabetically, you can convert the string into a character array, sort the array, and then convert it back into a string. Here's a Java program to do that:
+Program: 
+import java.util.Arrays;
+
+
+public class SortStringAlphabetically {
+    public static void main(String[] args) {
+        // Input string
+        String input = "PWSKILLS";
+
+
+        // Convert the string to a character array
+        char[] charArray = input.toCharArray();
+
+
+        // Sort the character array
+        Arrays.sort(charArray);
+
+
+        // Convert the sorted character array back to a string
+        String sortedString = new String(charArray);
+
+
+        // Output the sorted string
+        System.out.println("Sorted String: " + sortedString);
+    }
+}
+
+
+Output:
+Sorted String: IKLLPSSW
+
+
+Explanation:
+Convert to Char Array:
+
+
+The input string "PWSKILLS" is converted into a character array, which allows for easy manipulation of individual characters.
+Sorting:
+
+
+The Arrays.sort(charArray) method sorts the characters in the array in ascending (alphabetical) order.
+Convert Back to String:
+
+
+The sorted character array is then converted back to a string.
+Output:
+
+
+The sorted string, "IKLLPSSW", is printed as the final result.
