@@ -1,0 +1,129 @@
+﻿EncapsulationAssignment 
+
+
+1) What is Encapsulation in Java? Why is it called Data hiding?
+Ans:-Encapsulation is a fundamental object-oriented programming (OOP) concept where the internal details of a class (such as data variables) are hidden from the outside world and accessed through public methods. It is called data hiding because it restricts direct access to the class's internal data members and allows only controlled access through getters and setters.
+Example:
+Program:
+public class Employee {
+    private String name;  // Private variable
+
+
+    // Public method to access the private variable
+    public String getName() {
+        return name;
+    }
+
+
+    // Public method to modify the private variable
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+The name variable is hidden (data hiding), and the user can only interact with it through the getName() and setName() methods.
+ 2) What are the important features of Encapsulation?
+Ans:-
+Data Hiding: The private fields of a class are hidden from other classes.
+Control Access: You can control the access level of class members using access modifiers (private, protected, public).
+Improved Maintainability: Since the internal implementation is hidden, any changes to the internal code do not affect external code.
+Flexibility and Reusability: Encapsulation makes the code more flexible by providing controlled access and makes it reusable.
+
+
+3) What are getter and setter methods in Java Explain with an example?
+Ans:-
+Getter and Setter methods are used to retrieve and modify the value of private fields. These methods are a key feature of encapsulation.
+Example:
+public class Student {
+    private int age;  // Private variable
+ // Getter method to access the age
+    public int getAge() {
+        return age;
+    }
+// Setter method to set the age
+    public void setAge(int age) {
+        if (age > 0) {
+            this.age = age;
+        } else {
+            System.out.println("Age should be positive.");
+        }
+    }
+}
+Here, the age field is private, and the getAge() and setAge() methods provide controlled access to it.
+
+
+
+
+4) What is the use of this keyword explained with an example?
+Ans:-The this keyword in Java refers to the current instance of the class. It is used to distinguish between instance variables and local variables when they have the same name. It is also used to call constructors and methods from within the class.
+
+
+Example:
+public class Car {
+    private String model;
+
+
+    public Car(String model) {
+        this.model = model;  // 'this' refers to the current instance variable
+    }
+
+
+    public void displayModel() {
+        System.out.println("Car model: " + this.model); // Referring to current object
+    }
+}
+In this example, this.model refers to the instance variable, and model refers to the parameter passed in the constructor.
+
+
+
+
+5) What is the advantage of Encapsulation?
+Ans:-
+Security: Encapsulation provides data security by hiding the internal representation of the object.
+Control: You can control how the data is accessed or modified.
+Modularity: The code is more modular as internal implementation details are separated from the external interface.
+Easy Maintenance: Internal changes to class fields don’t require changes to the external code.
+
+
+6) How to achieve encapsulation in Java? Give an example?
+Ans:-To achieve encapsulation in Java:
+
+
+Declare the class variables as private.
+Provide public getter and setter methods to access and update these variables.
+Example:
+public class Person {
+    private String name;  // Private variable
+    private int age;
+
+
+    // Getter method for name
+    public String getName() {
+        return name;
+    }
+
+
+    // Setter method for name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    // Getter method for age
+    public int getAge() {
+        return age;
+    }
+
+
+    // Setter method for age
+    public void setAge(int age) {
+        if (age > 0) {
+            this.age = age;
+        } else {
+            System.out.println("Invalid age");
+        }
+    }
+}
+In this example, the class Person encapsulates its fields name and age and provides access through getter and setter methods.
+
+
+Encapsulation ensures that data is accessed and modified through a controlled interface, making the code more secure and maintainable.
