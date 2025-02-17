@@ -1,0 +1,889 @@
+﻿Exceptions Handling
+
+
+
+
+1) Explain different types of Errors in Java?
+Ans:
+In Java, errors are serious issues that occur at runtime and cause the program to terminate unexpectedly. Errors are part of the java.lang.Error class and are not meant to be handled using exceptions. They usually indicate problems that the program cannot recover from.
+
+
+Types of Errors in Java:
+Compile-Time Errors
+
+
+These errors occur during compilation and prevent the program from running.
+Examples:
+Syntax Errors: Missing semicolons, incorrect method declarations, or misspelled keywords.
+
+
+public class Example {
+    public static void main(String[] args) {
+        System.out.println("Hello World") // Missing semicolon
+    }
+}
+Type Errors: Assigning an incorrect data type.
+
+
+int number = "Hello"; // Type mismatch error
+Method Signature Errors: Calling a method with incorrect parameters.
+Runtime Errors (Exceptions)
+
+
+These errors occur during program execution and can be handled using exceptions.
+Examples:
+ArithmeticException: Division by zero.
+
+
+int a = 10 / 0; // Throws ArithmeticException
+NullPointerException: Accessing a method or variable of a null object.
+
+
+String str = null;
+System.out.println(str.length()); // NullPointerException
+ArrayIndexOutOfBoundsException: Accessing an index out of array bounds.
+
+
+int[] arr = new int[5];
+System.out.println(arr[10]); // ArrayIndexOutOfBoundsException
+ClassCastException: Invalid typecasting.
+
+
+Object obj = new Integer(10);
+String str = (String) obj; // ClassCastException
+Logical Errors
+
+
+These errors do not cause a crash but lead to incorrect results.
+Example:
+
+
+int a = 5, b = 10;
+int sum = a - b; // Incorrect logic (should be a + b)
+System.out.println("Sum: " + sum); // Output: -5 (Wrong output)
+Errors (Serious Issues)
+
+
+These errors are part of java.lang.Error and indicate system-level issues that the program cannot recover from.
+Examples:
+StackOverflowError: Caused by deep recursion.
+
+
+public class StackOverflowExample {
+    public static void recursion() {
+        recursion(); // Infinite recursion
+    }
+    public static void main(String[] args) {
+        recursion();
+    }
+}
+OutOfMemoryError: Occurs when the JVM runs out of memory.
+
+
+import java.util.ArrayList;
+public class MemoryErrorExample {
+    public static void main(String[] args) {
+        ArrayList<int[]> list = new ArrayList<>();
+        while (true) {
+            list.add(new int[1000000]); // Consuming memory endlessly
+        }
+    }
+}
+NoClassDefFoundError: Occurs when a class is missing at runtime but was available during compilation.
+Conclusion
+Compile-time errors are detected before execution.
+Runtime errors (exceptions) are caught and handled using try-catch.
+Logical errors are difficult to detect as they don’t throw exceptions.
+Errors (like StackOverflowError, OutOfMemoryError) usually indicate system failures and cannot be handled.
+
+
+2) What is an Exception in Java?
+Ans:
+An exception in Java is an unexpected event that occurs during program execution, disrupting the normal flow of the program. Exceptions are objects that represent errors, and they can be handled using try-catch blocks to prevent program termination.
+
+
+Java exceptions are part of the java.lang.Exception class and are used to indicate issues that can be recovered from.
+
+
+Types of Exceptions in Java
+Exceptions in Java are broadly classified into two categories:
+
+
+Checked Exceptions (Compile-time Exceptions)
+
+
+These are exceptions that the compiler checks during compilation.
+If not handled, the program will not compile.
+Examples:
+IOException – Occurs when handling input/output operations.
+SQLException – Occurs during database operations.
+FileNotFoundException – Occurs if a file is not found.
+Example: Handling Checked Exception
+
+
+
+
+import java.io.*;
+
+
+public class CheckedExceptionExample {
+    public static void main(String[] args) {
+        try {
+            FileReader file = new FileReader("file.txt"); // File might not exist
+            BufferedReader br = new BufferedReader(file);
+            System.out.println(br.readLine());
+            br.close();
+        } catch (IOException e) {
+            System.out.println("File not found or unable to read!");
+        }
+    }
+}
+Unchecked Exceptions (Runtime Exceptions)
+
+
+These exceptions occur during execution and are not checked at compile-time.
+They occur due to programming errors and can be avoided with proper coding.
+Examples:
+ArithmeticException – Division by zero.
+NullPointerException – Accessing a null object reference.
+ArrayIndexOutOfBoundsException – Accessing an array index that doesn't exist.
+Example: Handling Unchecked Exception
+
+
+
+
+public class UncheckedExceptionExample {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0; // ArithmeticException
+            System.out.println(result);
+        } catch (ArithmeticException e) {
+            System.out.println("Cannot divide by zero!");
+        }
+    }
+}
+Exception Handling in Java
+To handle exceptions, Java provides five key keywords:
+
+
+try – The block where the code that may cause an exception is written.
+catch – Catches and handles exceptions.
+finally – Executes whether an exception occurs or not.
+throw – Used to manually throw an exception.
+throws – Declares an exception in a method signature.
+Example: Using try-catch-finally
+
+
+
+
+public class ExceptionHandlingExample {
+    public static void main(String[] args) {
+        try {
+            int[] arr = {1, 2, 3};
+            System.out.println(arr[5]); // ArrayIndexOutOfBoundsException
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array index is out of bounds!");
+        } finally {
+            System.out.println("Execution completed.");
+        }
+    }
+}
+Custom Exceptions in Java
+You can define your own exceptions by extending the Exception class.
+
+
+Example: Custom Exception
+
+
+
+
+class MyException extends Exception {
+    public MyException(String message) {
+        super(message);
+    }
+}
+
+
+public class CustomExceptionExample {
+    public static void main(String[] args) {
+        try {
+            throw new MyException("This is a custom exception!");
+        } catch (MyException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+Conclusion
+Exceptions help prevent unexpected crashes and improve program stability.
+Checked exceptions are checked at compile-time, while unchecked exceptions occur at runtime.
+Handling exceptions using try-catch-finally ensures better control over program execution.
+
+
+3) How can you handle exceptions in Java?Explain with an example?
+Ans:
+Java provides several ways to handle exceptions to prevent program crashes and ensure smooth execution. Exception handling is done using try, catch, finally, throw, and throws.
+
+
+1. Using try-catch Block
+The try block contains the code that may cause an exception, and the catch block handles the exception.
+
+
+Example: Handling ArithmeticException
+
+
+public class ExceptionHandlingExample {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0; // This will cause ArithmeticException
+            System.out.println(result);
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Division by zero is not allowed.");
+        }
+    }
+}
+Output:
+
+
+Error: Division by zero is not allowed.
+2. Using Multiple catch Blocks
+If multiple exceptions may occur, we can use multiple catch blocks to handle each one separately.
+
+
+Example: Handling Multiple Exceptions
+
+
+public class MultipleExceptionHandling {
+    public static void main(String[] args) {
+        try {
+            int[] arr = {1, 2, 3};
+            System.out.println(arr[5]); // ArrayIndexOutOfBoundsException
+        } catch (ArithmeticException e) {
+            System.out.println("Arithmetic error occurred.");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array index is out of bounds!");
+        } catch (Exception e) {
+            System.out.println("Some other error occurred.");
+        }
+    }
+}
+Output:
+
+
+Array index is out of bounds!
+3. Using finally Block
+The finally block always executes, whether an exception occurs or not. It is mainly used for resource cleanup like closing files, database connections, etc.
+
+
+Example: Using finally
+
+
+public class FinallyExample {
+    public static void main(String[] args) {
+        try {
+            int num = 10 / 0; // ArithmeticException
+        } catch (ArithmeticException e) {
+            System.out.println("Exception handled.");
+        } finally {
+            System.out.println("Finally block executed.");
+        }
+    }
+}
+Output:
+
+
+Exception handled.
+Finally block executed.
+4. Using throw to Manually Throw an Exception
+The throw keyword is used to manually throw an exception.
+
+
+Example: Throwing an Exception Manually
+
+
+public class ThrowExample {
+    public static void validateAge(int age) {
+        if (age < 18) {
+            throw new ArithmeticException("Not eligible to vote.");
+        } else {
+            System.out.println("Eligible to vote.");
+        }
+    }
+
+
+    public static void main(String[] args) {
+        validateAge(16); // Throws an exception
+    }
+}
+Output:
+
+
+Exception in thread "main" java.lang.ArithmeticException: Not eligible to vote.
+5. Using throws to Declare an Exception
+The throws keyword is used in a method declaration to indicate that a method might throw an exception.
+
+
+Example: Using throws
+
+
+import java.io.*;
+
+
+public class ThrowsExample {
+    static void readFile() throws IOException {
+        FileReader file = new FileReader("file.txt"); // Might throw an exception
+        BufferedReader br = new BufferedReader(file);
+        System.out.println(br.readLine());
+        br.close();
+    }
+
+
+    public static void main(String[] args) {
+        try {
+            readFile();
+        } catch (IOException e) {
+            System.out.println("File not found.");
+        }
+    }
+}
+Output:
+File not found.
+Conclusion
+Use try-catch to handle exceptions.
+Use multiple catch blocks for different exceptions.
+Use finally to execute cleanup code.
+Use throw to manually raise an exception.
+Use throws to indicate that a method might throw an exception.
+
+
+4) Why do we need exception handling in Java?
+Ans:Exception handling in Java is essential because it helps maintain the stability, reliability, and security of a program by preventing abrupt crashes. Without proper exception handling, unexpected runtime errors can cause a program to terminate unexpectedly, leading to a poor user experience and possible data loss.
+
+
+Key Reasons for Using Exception Handling in Java
+1. Prevents Program Crashes
+Without exception handling, an unexpected error (e.g., division by zero, accessing an invalid index) can terminate the program. Exception handling ensures that errors are caught and handled gracefully.
+
+
+Example (Without Exception Handling - Causes Crash):
+
+
+
+
+public class CrashExample {
+    public static void main(String[] args) {
+        int result = 10 / 0; // ArithmeticException: / by zero
+        System.out.println(result); // This line will not execute
+    }
+}
+ Output:
+
+
+
+
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+Example (With Exception Handling - Program Continues):
+
+
+
+
+public class HandledExample {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0;
+            System.out.println(result);
+        } catch (ArithmeticException e) {
+            System.out.println("Cannot divide by zero!");
+        }
+        System.out.println("Program continues...");
+    }
+}
+ Output:
+
+
+
+
+Cannot divide by zero!
+Program continues...
+2. Improves Debugging and Maintenance
+Instead of terminating, exception handling provides clear error messages and helps developers identify and fix issues quickly.
+
+
+Example: If a method throws an exception, Java provides a stack trace to pinpoint the error’s location.
+
+
+
+
+public class DebugExample {
+    public static void main(String[] args) {
+        try {
+            int arr[] = new int[3];
+            System.out.println(arr[5]); // Out of bounds
+        } catch (ArrayIndexOutOfBoundsException e) {
+            e.printStackTrace(); // Helps identify the problem
+        }
+    }
+}
+ Output (Useful Debugging Message):
+
+
+
+
+java.lang.ArrayIndexOutOfBoundsException: Index 5 out of bounds for length 3
+        at DebugExample.main(DebugExample.java:6)
+3. Separates Error Handling from Normal Code
+Exception handling allows us to write clean and readable code by separating the normal execution flow from error handling.
+
+
+ Without Exception Handling (Messy Code):
+
+
+
+
+public class MessyCode {
+    public static void main(String[] args) {
+        int num = 10, den = 0, result;
+        if (den == 0) {
+            System.out.println("Cannot divide by zero!");
+        } else {
+            result = num / den;
+            System.out.println(result);
+        }
+    }
+}
+🔹 With Exception Handling (Clean Code):
+
+
+java
+Copy
+Edit
+public class CleanCode {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0;
+            System.out.println(result);
+        } catch (ArithmeticException e) {
+            System.out.println("Cannot divide by zero!");
+        }
+    }
+}
+This improves readability and keeps the logic separate from error handling.
+
+
+4. Enables Recovery from Errors
+Instead of terminating the program, exception handling allows recovery by providing an alternate solution.
+
+
+ Example: Default Values When Errors Occur
+
+
+public class RecoveryExample {
+    public static void main(String[] args) {
+        int result;
+        try {
+            result = 10 / 0; // Division by zero
+        } catch (ArithmeticException e) {
+            System.out.println("Error occurred, using default value.");
+            result = -1; // Providing an alternative value
+        }
+        System.out.println("Result: " + result);
+    }
+}
+Output:
+
+
+
+
+Error occurred, using default value.
+Result: -1
+The program recovers and continues execution instead of crashing.
+
+
+5. Ensures Resource Management (finally Block)
+Some resources, like files, database connections, and network sockets, must be closed properly to avoid memory leaks.
+
+
+Example: Ensuring File Closing
+
+
+
+
+import java.io.*;
+
+
+public class ResourceHandlingExample {
+    public static void main(String[] args) {
+        FileReader file = null;
+        try {
+            file = new FileReader("file.txt");
+            BufferedReader br = new BufferedReader(file);
+            System.out.println(br.readLine());
+        } catch (IOException e) {
+            System.out.println("File not found!");
+        } finally {
+            try {
+                if (file != null) file.close(); // Ensures file is closed
+            } catch (IOException e) {
+                System.out.println("Error closing the file.");
+            }
+        }
+    }
+}
+Even if an exception occurs, the finally block ensures proper cleanup.
+
+
+6. Enables Custom Exception Handling (Better Control)
+Java allows custom exceptions, so developers can define their own meaningful errors.
+Example: Custom Exception for Invalid Age
+
+
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+}
+
+
+public class CustomExceptionExample {
+    static void checkAge(int age) throws InvalidAgeException {
+        if (age < 18) {
+            throw new InvalidAgeException("Age must be 18 or above.");
+        } else {
+            System.out.println("You are eligible.");
+        }
+    }
+
+
+    public static void main(String[] args) {
+        try {
+            checkAge(16);
+        } catch (InvalidAgeException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+ Output:
+
+
+Age must be 18 or above.
+This provides better control over application-specific errors.
+
+
+7. Supports Exception Propagation (throws Keyword)
+Methods can pass exceptions to their caller instead of handling them directly.
+
+
+ Example: Exception Propagation
+
+
+
+
+class ExceptionPropagation {
+    static void method1() throws ArithmeticException {
+        int num = 10 / 0; // Exception occurs here
+    }
+
+
+    public static void main(String[] args) {
+        try {
+            method1();
+        } catch (ArithmeticException e) {
+            System.out.println("Exception handled in main.");
+        }
+    }
+}
+ Output:
+
+
+
+
+Exception handled in main.
+ This avoids cluttering low-level methods with error handling.
+
+
+Conclusion
+ Exception handling prevents program crashes
+ Helps in debugging and fixing errors
+ Separates error handling from normal logic
+ Ensures resource management (finally block)
+ Allows recovery and alternative solutions
+ Supports custom exceptions for better control
+ Enables error propagation for cleaner code
+
+
+
+
+5) What is the difference between exception and error in Java?
+Ans:
+Difference Between Exception and Error in Java
+Both Exceptions and Errors are subclasses of Throwable in Java, but they serve different purposes.
+
+
+Feature        Exception        Error
+Definition        An Exception is an issue that occurs during program execution, which can be handled and recovered from.        An Error is a severe problem that occurs in the system or JVM, which usually cannot be handled.
+Type of Problem        Indicates logical mistakes or runtime issues in the program.        Indicates serious system failures (e.g., memory overflow, JVM crashes).
+Recoverable?         Yes, exceptions can be handled using try-catch.No, errors are unrecoverable and usually require a program restart.
+Caused By        Coding mistakes (e.g., invalid input, file not found, division by zero).        JVM-related issues (e.g., out of memory, stack overflow).
+Handled Using        try-catch, throws, throw, finally.        Cannot be handled normally.
+Belongs To        java.lang.Exception class.        java.lang.Error class.
+Examples of Exception vs Error
+1. Example of Exception (Recoverable)
+
+
+public class ExceptionExample {
+    public static void main(String[] args) {
+        try {
+            int num = 10 / 0; // ArithmeticException
+        } catch (ArithmeticException e) {
+            System.out.println("Handled: Division by zero is not allowed.");
+        }
+        System.out.println("Program continues...");
+    }
+}
+ Output:
+
+
+
+
+Handled: Division by zero is not allowed.
+Program continues...
+ Explanation: The exception is handled, so the program continues execution.
+
+
+2. Example of Error (Unrecoverable)
+
+
+public class ErrorExample {
+    public static void recursiveMethod() {
+        recursiveMethod(); // Causes StackOverflowError
+    }
+
+
+    public static void main(String[] args) {
+        recursiveMethod();
+    }
+}
+ Output:
+
+
+
+
+Exception in thread "main" java.lang.StackOverflowError
+ Explanation: StackOverflowError occurs due to infinite recursion, and the program crashes.
+
+
+Types of Exceptions
+Checked Exceptions (Compile-time)
+
+
+Handled at compile-time.
+Example: IOException, SQLException.
+Needs try-catch or throws to compile.
+Unchecked Exceptions (Runtime)
+
+
+Occur at runtime.
+Example: ArithmeticException, NullPointerException, ArrayIndexOutOfBoundsException.
+Types of Errors
+Virtual Machine Errors → OutOfMemoryError, StackOverflowError
+Linkage Errors → ClassNotFoundError, NoSuchMethodError
+IO System Errors → IOError
+Key Takeaways
+ Exceptions are part of normal program execution and can be handled.
+ Errors are serious issues related to the JVM and cannot be handled.
+ Use try-catch for exceptions, but avoid handling errors directly.
+
+
+
+
+6) Name the different types of exceptions in Java?
+Ans:Exceptions in Java are categorized into Checked Exceptions and Unchecked Exceptions.
+
+
+1. Checked Exceptions (Compile-Time Exceptions)
+Checked exceptions are checked by the compiler at compile-time. If not handled, the program will not compile. These exceptions occur due to external factors like file handling, database connection failures, etc.
+
+
+Examples of Checked Exceptions
+Exception        Description
+IOException        Occurs when an input/output operation fails (e.g., file not found).
+SQLException        Occurs when there is a database access error.
+FileNotFoundException        Thrown when a file is not found in the specified path.
+ClassNotFoundException        Raised when trying to load a class that does not exist.
+InterruptedException        Occurs when a thread is interrupted while waiting/sleeping.
+Example: Handling Checked Exception (IOException)
+
+
+import java.io.*;
+
+
+public class CheckedExceptionExample {
+    public static void main(String[] args) {
+        try {
+            FileReader file = new FileReader("nonexistent.txt"); // File not found
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found! Please check the path.");
+        }
+    }
+}
+ Output:
+
+
+
+
+File not found! Please check the path.
+2. Unchecked Exceptions (Runtime Exceptions)
+Unchecked exceptions occur at runtime and are not checked by the compiler. These exceptions are usually caused by logical errors in the program.
+
+
+Examples of Unchecked Exceptions
+Exception        Description
+ArithmeticException        Occurs when an invalid arithmetic operation is performed (e.g., divide by zero).
+NullPointerException        Occurs when trying to access a method or field on a null object.
+ArrayIndexOutOfBoundsException        Thrown when trying to access an array index that doesn’t exist.
+NumberFormatException        Occurs when trying to convert an invalid string into a number.
+IllegalArgumentException        Raised when an illegal or inappropriate argument is passed.
+Example: Handling Unchecked Exception (ArithmeticException)
+
+
+public class UncheckedExceptionExample {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0; // ArithmeticException
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Cannot divide by zero!");
+        }
+    }
+}
+Output:
+
+
+
+
+Error: Cannot divide by zero!
+3. Errors (JVM Related Issues - Unrecoverable)
+Errors are not exceptions but are serious problems that usually cannot be handled. They occur at the JVM level and cause program termination.
+
+
+Examples of Errors
+Error        Description
+StackOverflowError        Occurs due to infinite recursion, exhausting the stack memory.
+OutOfMemoryError        Happens when the JVM runs out of memory.
+NoClassDefFoundError        Thrown when a required class is missing at runtime.
+Example: Error (StackOverflowError)
+
+
+public class StackOverflowErrorExample {
+    public static void recursiveMethod() {
+        recursiveMethod(); // Infinite recursion
+    }
+
+
+    public static void main(String[] args) {
+        recursiveMethod();
+    }
+}
+ Output:
+
+
+
+
+Exception in thread "main" java.lang.StackOverflowError
+ Explanation: This error cannot be caught using try-catch because it's a JVM issue.
+
+
+Summary Table
+Type                          Examples                    Can it be Handled?                                                               Checked at Compile Time?
+Checked Exceptions        IOException, SQLException, ClassNotFoundException         Yes         Yes
+Unchecked Exceptions        ArithmeticException, NullPointerException, ArrayIndexOutOfBoundsException         Yes         No
+Errors        StackOverflowError, OutOfMemoryError, NoClassDefFoundError        No         No
+Final Notes
+Checked exceptions must be handled or declared with throws.
+Unchecked exceptions can be avoided by writing proper code.
+Errors should not be handled in most cases; instead, the root cause should be fixed.
+
+
+7) Can we just use try instead of finally and catch blocks?
+Ans:No, in Java, a try block cannot exist alone—it must be followed by either a catch block, a finally block, or both.
+
+
+Possible Combinations
+ Valid syntax:
+
+
+try → catch
+try → finally
+try → catch → finally
+Invalid syntax:
+
+
+
+
+try {
+    int x = 10 / 0; // Exception occurs
+} // ERROR: No catch or finally block!
+ Compilation error:
+
+
+
+
+'try' without 'catch', 'finally' or resource declaration
+Example 1: try with catch (Valid)
+
+
+public class TryCatchExample {
+    public static void main(String[] args) {
+        try {
+            int x = 10 / 0;
+        } catch (ArithmeticException e) {
+            System.out.println("Exception handled: Cannot divide by zero.");
+        }
+    }
+}
+ Output:
+
+
+
+
+Exception handled: Cannot divide by zero.
+Example 2: try with finally (Valid)
+Even if no exception occurs, the finally block always executes.
+
+
+
+
+public class TryFinallyExample {
+    public static void main(String[] args) {
+        try {
+            System.out.println("Inside try block.");
+        } finally {
+            System.out.println("Finally block executed.");
+        }
+    }
+}
+ Output:
+
+
+
+
+Inside try block.
+Finally block executed.
+Example 3: try without catch or finally (Invalid)
+
+
+public class InvalidTryExample {
+    public static void main(String[] args) {
+        try {
+            System.out.println("Hello");
+        } // Compilation error!
+    }
+}
+Error:
+
+
+
+
+'try' without 'catch', 'finally' or resource declaration
+Conclusion
+ At least one catch or finally is required after try.
+ Use catch to handle exceptions.
+ Use finally to execute important code (e.g., closing resources).
