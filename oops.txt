@@ -1,0 +1,185 @@
+1. What is Inheritance in Java?
+Ans: The technique of creating a new class by using an existing class functionality is called inheritance in Java.
+In other words, inheritance is a process where a child class acquires all the properties and behaviours of the
+parent class.
+2. What is superclass and subclass??
+Ans: A class from where a subclass inherits features is called superclass. It is also called base class or parent
+class.
+A class that inherits all the members (fields, method, and nested classes) from another class is called a
+subclass. It is also called a derived class, child class, or extended class.
+3. How is Inheritance implemented/achieved in Java?
+Ans: Inheritance can be implemented or achieved by using two keywords:
+extends: extends is a keyword that is used for developing the inheritance between two classes and two
+interfaces.
+implements: implements keyword is used for developing the inheritance between a class and interface.
+4. What is polymorphism?
+Ans: Polymorphism in OOP is the ability of an entity to take several forms. In other words, it refers to the ability of
+an object (or a reference to an object) to take different forms of objects. It allows a common data-gathering
+message to be sent to each class. Polymorphism encourages what is called ‘extendibility’ which means an
+object or a class can have its uses extended.
+5. Differentiate between method overloading and method overriding.
+
+6. What is an abstraction explained with an Example?
+Ans: Abstraction is nothing but the quality of dealing with ideas rather than events. It basically deals with hiding
+the internal details and showing the essential things to the user.
+Abstract class Sports { // abstract class sports
+Abstract void jump(); // abstract method
+}
+7. What is the difference between an abstract method and final method in Java?Explain with an example
+Ans: The abstract method is incomplete while the final method is regarded as complete. The only way to use
+an abstract method is by overriding it, but you cannot override a final method in Java.
+8. What is the final class in Java?
+Ans: A class declared with the final keyword is known as the final class. A final class can’t be inherited by
+subclasses. By using the final class, we can restrict the inheritance of the class. We can create a class as a final
+class only if it is complete in nature, which means it must not be an abstract class. In java, all the wrapper
+classes are final classes like String, Integer, etc.
+If we try to inherit a final class, then the compiler throws an error at compilation time. We can’t create a class as
+immutable without the final class.
+final class ParentClass
+{
+void showData()
+{
+System.out.println("This is a method of final Parent class");
+}
+}
+//It will throw compilation error
+class ChildClass extends ParentClass
+{
+void showData()
+{
+System.out.println("This is a method of Child class");
+}
+}
+class MainClass
+{
+public static void main(String arg[])
+{
+ParentClass obj = new ChildClass();
+obj.showData();
+}
+}
+
+7. What is the difference between an abstract method and final method in Java?Explain with an example
+Ans: The abstract method is incomplete while the final method is regarded as complete. The only way to use
+an abstract method is by overriding it, but you cannot override a final method in Java.
+
+8. What is the final class in Java?
+Ans: A class declared with the final keyword is known as the final class. A final class can’t be inherited by
+subclasses. By using the final class, we can restrict the inheritance of the class. We can create a class as a final
+class only if it is complete in nature, which means it must not be an abstract class. In java, all the wrapper
+classes are final classes like String, Integer, etc.
+If we try to inherit a final class, then the compiler throws an error at compilation time. We can’t create a class as
+immutable without the final class.
+final class ParentClass
+{
+void showData()
+{
+System.out.println("This is a method of final Parent class");
+}
+}
+//It will throw compilation error
+class ChildClass extends ParentClass
+{
+void showData()
+{
+System.out.println("This is a method of Child class");
+}
+}
+class MainClass
+{
+public static void main(String arg[])
+{
+ParentClass obj = new ChildClass();
+obj.showData();
+}
+}
+Abstraction and Encapsulation are two fundamental concepts of Object-Oriented Programming (OOP). Here’s the difference between them:
+
+Aspect	         Abstraction	                                                     Encapsulation
+Definition	Hides complex implementation and shows only essential details.	Hides the internal state and protects object integrity.
+Focus	Focuses on what an object does.	Focuses on how an object is protected and controlled.
+Purpose	Simplifies code usage by reducing complexity.	Ensures data security and prevents unauthorized access.
+Implementation	Achieved using abstract classes and interfaces.	Achieved using access modifiers like private, public, etc.
+Example	A car's steering wheel—you know how to use it, not how it works.	A car's engine—its details are hidden inside the hood.
+
+10)  Difference between Runtime and compile time polymorphism explain with an example?
+
+
+Polymorphism in programming refers to the ability of an object to take on many forms. It is mainly divided into two types:
+
+Compile-Time Polymorphism (Static Polymorphism)
+Run-Time Polymorphism (Dynamic Polymorphism)
+1. Compile-Time Polymorphism (Static Binding):
+It is determined at the time of compilation.
+Achieved through method overloading and operator overloading.
+The method to be executed is selected by the compiler based on the method signature.
+Example: Method Overloading in Java:
+
+
+class CompileTimePolymorphism {
+    // Method with two int parameters
+    void show(int a, int b) {
+        System.out.println("Sum: " + (a + b));
+    }
+
+    // Overloaded method with three int parameters
+    void show(int a, int b, int c) {
+        System.out.println("Sum: " + (a + b + c));
+    }
+
+    public static void main(String[] args) {
+        CompileTimePolymorphism obj = new CompileTimePolymorphism();
+        obj.show(5, 10);         // Calls the method with two parameters
+        obj.show(5, 10, 15);     // Calls the method with three parameters
+    }
+}
+Output:
+
+Sum: 15  
+Sum: 30  
+Explanation:
+
+The method call is determined during compilation.
+The compiler decides which method to execute based on the number of arguments.
+2. Run-Time Polymorphism (Dynamic Binding):
+It is determined during the execution (run-time).
+Achieved through method overriding.
+The method to be executed is determined by the object that is being referred to, not the reference type.
+Example: Method Overriding in Java:
+
+
+class Parent {
+    void show() {
+        System.out.println("This is the Parent class");
+    }
+}
+
+class Child extends Parent {
+    @Override
+    void show() {
+        System.out.println("This is the Child class");
+    }
+}
+
+public class RunTimePolymorphism {
+    public static void main(String[] args) {
+        Parent obj = new Child(); // Upcasting
+        obj.show();               // Calls the overridden method in Child class
+    }
+}
+Output:
+
+
+This is the Child class
+Explanation:
+
+Even though the reference type is Parent, the method of the Child class is executed.
+The decision is made at runtime, demonstrating dynamic binding.
+Key Differences:
+Feature	         Compile-Time Polymorphism	                              Run-Time Polymorphism
+Binding Time	 Happens during compilation (static binding)	Happens during execution (dynamic binding)
+Achieved By	 Method Overloading, Operator Overloading	Method Overriding
+Decision Time	 Decided by the compiler	                Decided by the JVM at runtime
+Flexibility	 Less flexible (depends on method signatures)	More flexible (depends on object type at runtime)
+Example	Multiple show() methods with different parameters	show() overridden in Child class
+Performance	 Faster (resolved at compile-time)	        Slightly slower (resolved at runtime)
